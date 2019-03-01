@@ -131,22 +131,22 @@ if __name__ == '__main__':
     count = 0
     while count < 1e9: # Max value is arbitary, just to avoid an infinite loop
 	try:
-	    dates, times = get_earliest_dates()
+            dates, times = get_earliest_dates()
+            write_logfile(log_filename, dates, times)
+            count += 1
+            for date in dates:
+                date = date.split()[1]
+                if check_date_earlier_than_other_date(latest_date, date):
+                    # A date was found. Send an email notice and print success.
+                    if args.notify:
+                        for target in targets:
+                            send_email_notice(server, email_login, target)
+                    print_if_verbose(print_msgs['success'])
+                    # Reduce the checking frequency
+                    time_val = time_val*36
+                else:
+                    print_if_verbose(print_msgs['failure'] + f' (Trial {count})')
         except WebDriverException:
-	    pass
-        write_logfile(log_filename, dates, times)
-        count += 1
-        for date in dates:
-            date = date.split()[1]
-            if check_date_earlier_than_other_date(latest_date, date):
-                # A date was found. Send an email notice and print success.
-                if args.notify:
-                    for target in targets:
-                        send_email_notice(server, email_login, target)
-                print_if_verbose(print_msgs['success'])
-                # Reduce the checking frequency
-                time_val = time_val*36
-            else:
-                print_if_verbose(print_msgs['failure'] + f' (Trial {count})')
+            pass
         # Wait...
         time.sleep(time_val)
