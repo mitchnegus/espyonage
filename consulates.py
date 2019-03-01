@@ -122,7 +122,7 @@ if __name__ == '__main__':
         email_login = input('Email username: ')
         email_password = getpass.getpass('Email password: ')
         server = login_to_email_server(email_login, email_password)
-    # Create a clear log filec
+    # Create a log file
     log_filename = 'appointments.log'
     clear_logfile(log_filename)
     # Set a default time to avoid pinging the server too much
@@ -131,8 +131,8 @@ if __name__ == '__main__':
     count = 0
     while count < 1e9: # Max value is arbitary, just to avoid an infinite loop
         dates, times = get_earliest_dates()
-        count += 1
         write_logfile(log_filename, dates, times)
+        count += 1
         for date in dates:
             date = date.split()[1]
             if check_date_earlier_than_other_date(latest_date, date):
@@ -140,10 +140,10 @@ if __name__ == '__main__':
                 if args.notify:
                     for target in targets:
                         send_email_notice(server, email_login, target)
-                print_if_verbose(print_msgs['success'] + f' (Trial {count})')
+                print_if_verbose(print_msgs['success'])
                 # Reduce the checking frequency
                 time_val = time_val*36
             else:
-                print_if_verbose(print_msgs['failure'])
+                print_if_verbose(print_msgs['failure'] + f' (Trial {count})')
         # Wait...
         time.sleep(time_val)
