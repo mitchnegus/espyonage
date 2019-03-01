@@ -7,7 +7,7 @@ import datetime
 import getpass
 import smtplib
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support.ui import Select, WebDriverWait # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
 from selenium.webdriver.firefox.options import Options
@@ -130,7 +130,10 @@ if __name__ == '__main__':
     # Begin searching 
     count = 0
     while count < 1e9: # Max value is arbitary, just to avoid an infinite loop
-        dates, times = get_earliest_dates()
+	try:
+	    dates, times = get_earliest_dates()
+        except WebDriverException:
+	    pass
         write_logfile(log_filename, dates, times)
         count += 1
         for date in dates:
