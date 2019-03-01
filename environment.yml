@@ -1,0 +1,5 @@
+name: espyonage
+
+dependencies:
+  - python=3.7
+  - selenium=3.141
