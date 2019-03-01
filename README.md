@@ -43,6 +43,8 @@ To enable both notifications and status updates, run the script with
 python consulates.py -v -n
 ```
 
+Quit the program at any point with the standard command to kill a process, `^C`. 
+
 ## User-defined parameters
 
 Some command line arguments must be specified before executing the script.
