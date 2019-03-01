@@ -140,7 +140,7 @@ if __name__ == '__main__':
                 if args.notify:
                     for target in targets:
                         send_email_notice(server, email_login, target)
-                print_if_verbose(print_msgs['success'])
+                print_if_verbose(print_msgs['success'] + f' (Trial {count})')
                 # Reduce the checking frequency
                 time_val = time_val*36
             else:
