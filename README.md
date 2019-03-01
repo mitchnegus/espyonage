@@ -1,4 +1,5 @@
 # espyonage
+
 Code for a bot to check the website of the Austrian Consulate for open appointments.
 
 This repository contains a script for routinely checking the website of the Los Angeles Austrian Consulate for visa appointments. 
@@ -10,7 +11,19 @@ The default time setting is for checks every 5 minutes, however if the bot finds
 For every check, the bot writes to the log file `appointments.log`.
 If desired, the user can pass the bot command line arguments to activate routine status updates on the console or send email notices when it finds an available date.
 
-**Note:** This package does not currently have any external dependencies, but must be run with Python 3.6 or greater.
+**Note:** The only external dependency of this package is Selenium, but it must be run with Python 3.6 or greater.
+An environment file is provided. Create the environment using 
+
+```
+conda env create -f environment.yml
+```
+
+and activate using 
+
+```
+conda activate espyonage
+```
+
 
 ## Usage
 
