@@ -10,7 +10,7 @@ The default time setting is for checks every 5 minutes, however if the bot finds
 For every check, the bot writes to the log file `appointments.log`.
 If desired, the user can pass the bot command line arguments to activate routine status updates on the console or send email notices when it finds an available date.
 
-**Note:** This package does not currently have any external dependencies, but must be run with Python 3.6 or greater.
+**Note:** This package does not currently have any external dependencies, but must be run with Python 3.6 or greater. The package does use Firefox through Selenium, and you may need to install Firefox's geckodriver.
 
 ## Usage
 
