@@ -51,5 +51,5 @@ Quit the program at any point with the standard command to kill a process, `^C`.
 Some command line arguments must be specified before executing the script.
 Listed at the top of the file, the `target` and `latest_date` variables must be set manually.
 
-* `target`: a list of email addresses for notifiaction recipients
+* `target`: a list of email addresses for notification recipients
 * `latest_date`: the latest date that an appointment can be scheduled (the script will notify you if it finds a date available before this)
